@@ -5,13 +5,13 @@
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h" 
 /************************* WiFi Access Point *********************************/ 
-#define WLAN_SSID       "OsloMet MakerSpace" 
-#define WLAN_PASS       "o5lom3et2018" 
-#define MQTT_SERVER      "10.253.17.254" // static ip address
+#define WLAN_SSID       "Your SSID" 
+#define WLAN_PASS       "Password" 
+#define MQTT_SERVER      "Host IP" // static ip address
 #define MQTT_PORT         1883                    
 #define MQTT_USERNAME    "" 
-#define MQTT_PASSWORD         "" 
-#define LED_PIN        4
+#define MQTT_PASSWORD    "" 
+#define LED_PIN           4
 /************ Global State ******************/ 
 // Create an ESP8266 WiFiClient class to connect to the MQTT server. 
 WiFiClient client; 
