@@ -1,5 +1,4 @@
 import time 
-import RPi.GPIO as GPIO 
 import paho.mqtt.client as mqtt
 
 # Setup callback functions that are called when MQTT events happen like 
