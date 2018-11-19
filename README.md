@@ -1,6 +1,6 @@
 # Intactive-box
 
-This is a publish-server-subscriber system where one device publish message on to the second device. 
+This is a publish-broker-subscriber system where one device publish message on to the second device. 
 The second device interpets the message and sends a new message to a third device that does something.
 I used 1 huzzah feather esp8266(HFE8266) as publisher, 2 HFE8266 as subscribers and a raspberry pi as a broker.
 
