@@ -18,7 +18,7 @@ def on_message(client, userdata, msg):
        # Look at the message data and perform the appropriate action. 
        if msg.payload == b'Button 1': 
            print("First button was pressed")
-           client.publish('/leds/esp8266', 'ON') 
+           client.publish('/led/esp8266', 'ON') 
        elif msg.payload == b'Button 2': 
            print("Second button was pressed")
            client.publish('/catapult/esp8266', 'THROW')
