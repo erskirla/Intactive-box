@@ -40,7 +40,6 @@ void setup() {
  Serial.println(); 
  Serial.println("WiFi connected"); 
  Serial.println("IP address: "); Serial.println(WiFi.localIP());
-  
  // Setup MQTT subscription for esp8266_led feed. 
  mqtt.subscribe(&esp8266_led); 
 }  
