@@ -5,9 +5,9 @@
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h" 
 /************************* WiFi Access Point *********************************/ 
-#define WLAN_SSID       "OsloMet MakerSpace" 
-#define WLAN_PASS       "o5lom3et2018" 
-#define MQTT_SERVER     "10.253.17.254" // static ip address
+#define WLAN_SSID       "Your SSID" 
+#define WLAN_PASS       "Password" 
+#define MQTT_SERVER     "Host IP" // static ip address
 #define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD   "" 
@@ -45,8 +45,7 @@ void setup() {
  Serial.println(); 
  Serial.println("WiFi connected"); 
  Serial.println("IP address: "); Serial.println(WiFi.localIP());
-} 
-
+}
 uint32_t x=0;
  
 void loop() { 
@@ -65,7 +64,7 @@ void loop() {
    Serial.println("First button pressed!"); 
    pi_buttons.publish("Button 1"); 
   } 
- if ((button2_first == HIGH) && (button2_second == LOW)) { 
+ else if ((button2_first == HIGH) && (button2_second == LOW)) { 
    // Second button was pressed! 
    Serial.println("Second button pressed!"); 
    pi_buttons.publish("Button 2"); 
