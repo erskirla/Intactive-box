@@ -2,7 +2,6 @@ import time
 import RPi.GPIO as GPIO 
 import paho.mqtt.client as mqtt
 
- 
 # Setup callback functions that are called when MQTT events happen like 
 # connecting to the server or receiving data from a subscribed feed. 
 def on_connect(client, userdata, flags, rc): 
@@ -14,7 +13,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server. 
 def on_message(client, userdata, msg): 
    print(msg.topic+" "+str( msg.payload)) 
-   # Check if this is a message for the Pi LED. 
+   # Check if this is a message for the Pi. 
    if msg.topic == '/buttons/pi': 
        # Look at the message data and perform the appropriate action. 
        if msg.payload == b'Button 1': 
@@ -22,7 +21,7 @@ def on_message(client, userdata, msg):
            client.publish('/leds/esp8266', 'ON') 
        elif msg.payload == b'Button 2': 
            print("Second button was pressed")
-           client.publish('/catapult/esp8266', 'ON')
+           client.publish('/catapult/esp8266', 'THROW')
        elif msg.payload == b'Button 3': 
            print("Third button was pressed!")
             
@@ -31,9 +30,8 @@ def on_message(client, userdata, msg):
 client = mqtt.Client() 
 client.on_connect = on_connect 
 client.on_message = on_message 
-client.connect('localhost', 1883, 60) 
-# Connect to the MQTT server and process messages in a background thread. 
-#client.loop_start() 
-# Main loop to listen for button presses. 
+client.connect('localhost', 1883, 60)
 print('Script is running, press Ctrl-C to quit...')
+# Connect to the MQTT server and process messages in a background thread.
+# Loop goes forever until disconected or interupted 
 client.loop_forever()
