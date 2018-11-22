@@ -5,13 +5,14 @@
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h" 
 /************************* WiFi Access Point *********************************/ 
-#define WLAN_SSID       "Your SSID" 
-#define WLAN_PASS       "Password" 
-#define MQTT_SERVER      "Host IP" // static ip address
+#define WLAN_SSID       "OsloMet MakerSpace" 
+#define WLAN_PASS       "o5lom3et2018" 
+#define MQTT_SERVER      "10.253.12.102" // static ip address
 #define MQTT_PORT         1883                    
-#define MQTT_USERNAME    "" 
-#define MQTT_PASSWORD    "" 
-#define LED_PIN           4
+#define MQTT_USERNAME   "" 
+#define MQTT_PASSWORD        "" 
+#define LED_PIN         15
+#define LED_blue        12
 /************ Global State ******************/ 
 // Create an ESP8266 WiFiClient class to connect to the MQTT server. 
 WiFiClient client; 
@@ -40,10 +41,11 @@ void setup() {
  Serial.println(); 
  Serial.println("WiFi connected"); 
  Serial.println("IP address: "); Serial.println(WiFi.localIP());
+  
  // Setup MQTT subscription for esp8266_led feed. 
  mqtt.subscribe(&esp8266_led); 
 }  
-uint32_t x=0;
+uint32_t period= 5000;
 
 void loop() {
  // Ensure the connection to the MQTT server is alive (this will make the first 
@@ -60,21 +62,9 @@ void loop() {
         // Checking for message 
      if (strncmp(message, "ON", 2) == 0) { 
        // Turn the LED on.
-       digitalWrite(LED_PIN, HIGH);
-       delay(350);
-       digitalWrite(LED_PIN, LOW);
-       delay(150);
-       digitalWrite(LED_PIN, HIGH);
-       delay(500);
-       digitalWrite(LED_PIN, LOW);
-       delay(150);
-       digitalWrite(LED_PIN, HIGH);
-       delay(350);
-       digitalWrite(LED_PIN, LOW);
-       delay(150);
-       digitalWrite(LED_PIN, HIGH);
-       delay(500);
-       digitalWrite(LED_PIN, LOW);
+       for( uint32_t tStart = millis(); (millis()-tStart) < period; ){ 
+       heartBeat(1.2);
+       }
       } 
     } 
   } 
