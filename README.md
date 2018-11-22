@@ -9,5 +9,5 @@ This device has 3 buttons with the opportunity to add more buttons.
 
 broker.py is the python code for raspberry pi.
 
-LED_blink.ino is the code for one device. 
+LED_blink.ino is the code for one device, this code calls apon heart_beat. 
 This device is a transparent anatomical correct heart that blinks with the heart rythm
