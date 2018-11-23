@@ -7,7 +7,7 @@
 /************************* WiFi Access Point *********************************/ 
 #define WLAN_SSID       "[Your SSID]" 
 #define WLAN_PASS       "[Password]" 
-#define MQTT_SERVER     "[Host IP-server]" // static ip address
+#define MQTT_SERVER     "[Host IP-adress]" // static ip address
 #define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD        "" 
@@ -26,7 +26,8 @@ Adafruit_MQTT_Subscribe esp8266_led = Adafruit_MQTT_Subscribe(&mqtt, MQTT_USERNA
 void MQTT_connect(); 
 void setup() { 
  Serial.begin(115200); 
- delay(10); 
+ delay(10);
+ //setup for the LED
  pinMode(LED_PIN, OUTPUT); 
  digitalWrite(LED_PIN, LOW);
  // Connect to WiFi access point. 
@@ -41,18 +42,17 @@ void setup() {
  Serial.println(); 
  Serial.println("WiFi connected"); 
  Serial.println("IP address: "); Serial.println(WiFi.localIP());
-  
  // Setup MQTT subscription for esp8266_led feed. 
  mqtt.subscribe(&esp8266_led); 
 }  
 uint32_t period= 5000; // 5 seconds
-
+// This is where the magic happens
 void loop() {
  // Ensure the connection to the MQTT server is alive (this will make the first 
  // connection and automatically reconnect when disconnected).  See the MQTT_connect 
  MQTT_connect(); 
  // this is our 'wait for incoming subscription' busy subloop 
- // Here its read the subscription 
+ // Here it reads the subscription 
  Adafruit_MQTT_Subscribe *subscription; 
  while ((subscription = mqtt.readSubscription())) { 
    if (subscription == &esp8266_led) { 
