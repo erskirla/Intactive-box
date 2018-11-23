@@ -5,9 +5,9 @@
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h" 
 /************************* WiFi Access Point *********************************/ 
-#define WLAN_SSID       "OsloMet MakerSpace" 
-#define WLAN_PASS       "o5lom3et2018" 
-#define MQTT_SERVER     "10.253.12.102" // static ip address
+#define WLAN_SSID       "your SSID " 
+#define WLAN_PASS       "password" 
+#define MQTT_SERVER     " IP-adress" // static ip address
 #define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD   "" 
@@ -20,7 +20,7 @@ WiFiClient client;
 Adafruit_MQTT_Client mqtt(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_PASSWORD); 
 /****************************** Feeds ***************************************/ 
 // Setup a feed called 'buttons' for publishing. 
-// Notice MQTT paths for AIO follow the form: <username>/feeds/<feedname> 
+// Notice MQTT paths for AIO follMakerSpaceow the form: <username>/feeds/<feedname> 
 Adafruit_MQTT_Publish pi_buttons = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/buttons/pi"); 
 //Adafruit_MQTT_Publish pi_button2 = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/buttons/pi"); 
 /*************************** Sketch Code ************************************/ 
@@ -28,11 +28,7 @@ Adafruit_MQTT_Publish pi_buttons = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/
 void MQTT_connect(); 
 void setup() { 
  Serial.begin(115200); 
- delay(10); 
- // Setup buttons as an input with internal pull-up. 
- pinMode(BUTTON1_PIN, INPUT_PULLUP);
- pinMode(BUTTON2_PIN, INPUT_PULLUP); 
- Serial.println(F("RPi-ESP-MQTT")); 
+ delay(10);  
  // Connect to WiFi access point. 
  Serial.println(); Serial.println(); 
  Serial.print("Connecting to "); 
