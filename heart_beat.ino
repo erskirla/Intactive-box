@@ -9,11 +9,9 @@ void heartBeat(float tempo){
         if (hbeatIndex > 3) hbeatIndex = 0;
 
         if ((hbeatIndex % 2) == 0){ 
-            digitalWrite(LED_PIN, HIGH);
-            digitalWrite(LED_blue, HIGH); 
+            digitalWrite(LED_PIN, HIGH); 
             delay((int)heartBeatArray[hbeatIndex]) ;   
             digitalWrite(LED_PIN, LOW); 
-            digitalWrite(LED_blue, LOW);
         }
         hbeatIndex++;
         // Serial.println(hbeatIndex);
