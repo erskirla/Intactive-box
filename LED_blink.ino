@@ -5,10 +5,10 @@
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h" 
 /************************* WiFi Access Point *********************************/ 
-#define WLAN_SSID       "OsloMet MakerSpace" 
-#define WLAN_PASS       "o5lom3et2018" 
-#define MQTT_SERVER      "10.253.12.102" // static ip address
-#define MQTT_PORT         1883                    
+#define WLAN_SSID       "[Your SSID]" 
+#define WLAN_PASS       "[Password]" 
+#define MQTT_SERVER     "[Host IP-server]" // static ip address
+#define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD        "" 
 #define LED_PIN         15
@@ -45,7 +45,7 @@ void setup() {
  // Setup MQTT subscription for esp8266_led feed. 
  mqtt.subscribe(&esp8266_led); 
 }  
-uint32_t period= 5000;
+uint32_t period= 5000; // 5 seconds
 
 void loop() {
  // Ensure the connection to the MQTT server is alive (this will make the first 
@@ -61,7 +61,7 @@ void loop() {
      Serial.println(message); 
         // Checking for message 
      if (strncmp(message, "ON", 2) == 0) { 
-       // Turn the LED on.
+       // Turn the LED on, and make sure the led blinks for the set period.
        for( uint32_t tStart = millis(); (millis()-tStart) < period; ){ 
        heartBeat(1.2);
        }
