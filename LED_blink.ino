@@ -12,7 +12,6 @@
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD        "" 
 #define LED_PIN         15
-#define LED_blue        12
 /************ Global State ******************/ 
 // Create an ESP8266 WiFiClient class to connect to the MQTT server. 
 WiFiClient client; 
