@@ -22,7 +22,6 @@ Adafruit_MQTT_Client mqtt(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_P
 // Setup a feed called 'buttons' for publishing. 
 // Notice MQTT paths for AIO follow the form: <username>/feeds/<feedname> 
 Adafruit_MQTT_Publish pi_buttons = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/buttons/pi"); 
-//Adafruit_MQTT_Publish pi_button2 = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/buttons/pi"); 
 /*************************** Sketch Code ************************************/ 
 
 void MQTT_connect(); 
