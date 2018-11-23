@@ -9,7 +9,7 @@ def on_connect(client, userdata, flags, rc):
    # reconnect then subscriptions will be renewed. 
    client.subscribe("/buttons/pi")
    
-# The callback for when a PUBLISH message is received from the server. 
+# The callback for when a PUBLISH message is received.
 def on_message(client, userdata, msg): 
    print(msg.topic+" "+str( msg.payload)) 
    # Check if this is a message for the Pi. 
