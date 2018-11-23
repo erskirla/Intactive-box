@@ -26,7 +26,7 @@ void loop() {
      Serial.println(message); 
         // Checking for message 
      if (strncmp(message, "ON", 2) == 0) { 
-       // Turn the LED on.
+       // Turn the LED on and make sure it runs for the set period.
        for( uint32_t tStart = millis(); (millis()-tStart) < period; ){ 
        heartBeat(1.2);
        }
