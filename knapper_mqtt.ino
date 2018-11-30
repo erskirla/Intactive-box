@@ -9,7 +9,7 @@
 #define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD   "" 
-// Here is where you define the buttons
+// Here is where you define the buttons GPIO
 #define BUTTON1_PIN     14                    
 #define BUTTON2_PIN     12
 /************ Global State ******************/ 
