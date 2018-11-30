@@ -1,3 +1,4 @@
+#***************** Broker setup ***************#
 import time 
 import paho.mqtt.client as mqtt
 
@@ -14,7 +15,10 @@ def on_message(client, userdata, msg):
    print(msg.topic+" "+str( msg.payload)) 
    # Check if this is a message for the Pi. 
    if msg.topic == '/buttons/pi': 
-       # Look at the message data and perform the appropriate action. 
+       # Look at the message data and perform the appropriate action.
+       # When adding a button copy/paste the elif msg.payload == b'Button [number]': function
+       # and add your [number] to your button number
+       # Edit client.publish('/[device]/esp8266'), change [device] to your device name.  
        if msg.payload == b'Button 1': 
            print("First button was pressed")
            client.publish('/led/esp8266', 'ON') 
