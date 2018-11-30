@@ -1,6 +1,4 @@
-/*************************************************** 
-  NodeMCU
-****************************************************/ 
+/*********************** Heart beat LED setup *******************************/
 #include <ESP8266WiFi.h> 
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h" 
@@ -10,7 +8,8 @@
 #define MQTT_SERVER     "[Host IP-adress]" // static ip address
 #define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
-#define MQTT_PASSWORD        "" 
+#define MQTT_PASSWORD        ""
+// Where you define your LED GPIO
 #define LED_PIN         15
 /************ Global State ******************/ 
 // Create an ESP8266 WiFiClient class to connect to the MQTT server. 
@@ -48,7 +47,8 @@ uint32_t period= 5000; // 5 seconds
 // This is where the magic happens
 void loop() {
  // Ensure the connection to the MQTT server is alive (this will make the first 
- // connection and automatically reconnect when disconnected).  See the MQTT_connect 
+ // connection and automatically reconnect when disconnected).  See the MQTT_connect.
+ // MQTT_connect(); has to be in every code (void loop) you want to add to the system.
  MQTT_connect(); 
  // this is our 'wait for incoming subscription' busy subloop 
  // Here it reads the subscription 
@@ -68,7 +68,7 @@ void loop() {
     } 
   } 
 }
-// Function to connect and reconnect as necessary to the MQTT server. 
+/** Function to connect and reconnect as necessary to the MQTT server. **/ 
 void MQTT_connect() { 
  int8_t ret; 
  // Stop if already connected. 
