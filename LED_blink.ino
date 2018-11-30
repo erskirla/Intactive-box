@@ -18,10 +18,11 @@ WiFiClient client;
 Adafruit_MQTT_Client mqtt(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_PASSWORD); 
 /****************************** Feeds ***************************************/ 
 // Setup a feed called 'esp8266_led' for subscribing to changes. 
+// Change "/[device]/esp8266", change [device] to your device name.
 Adafruit_MQTT_Subscribe esp8266_led = Adafruit_MQTT_Subscribe(&mqtt, MQTT_USERNAME "/led/esp8266"); 
 /*************************** Sketch Code ************************************/ 
 
-void MQTT_connect(); 
+void MQTT_connect(); //connects to the server
 void setup() { 
  Serial.begin(115200); 
  delay(10);
