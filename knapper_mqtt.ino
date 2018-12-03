@@ -61,19 +61,38 @@ void loop() {
   // Add your button[number]_second
  int button1_second = digitalRead(BUTTON1_PIN); 
  int button2_second = digitalRead(BUTTON2_PIN); 
+ // This is so the button only can be pressed once
+ int button1 = 0;  
+ int button2 = 0;
  // when adding more buttons copy paste the "if else" function and add your
  // button[number]_first and button[number]_second and edit 
  // pi_buttons.publish("Button [number]") 
  // you also need to add this button [number] on the broker (raspberry pi)
  if ((button1_first == HIGH) && (button1_second == LOW)) { 
-   // First button was pressed! 
-   Serial.println("First button pressed!"); 
-   pi_buttons.publish("Button 1"); 
+   // First button was pressed!
+   button1 += 1;
+   // The whileloop makes sure the device is finished 
+   // before the button can be pressed again
+   while(button1 == 1){
+     Serial.println("First button pressed!"); 
+     pi_buttons.publish("Button 1"); 
+     button1=2;
+    }
+   delay(15000);
+   button1 = 0;
   } 
  else if ((button2_first == HIGH) && (button2_second == LOW)) { 
-   // Second button was pressed! 
-   Serial.println("Second button pressed!"); 
-   pi_buttons.publish("Button 2"); 
+   // Second button was pressed!
+   button2 +=1;
+   // The whileloop makes sure the device is finished 
+   // before the button can be pressed again
+   while(button2 == 1){
+     Serial.println("Second button pressed!"); 
+     pi_buttons.publish("Button 2"); 
+     button2=2; 
+    }
+   delay(20000);
+   button2 = 0;
   } 
 }
  
