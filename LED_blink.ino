@@ -26,7 +26,8 @@ void MQTT_connect(); //connects to the server
 void setup() { 
  Serial.begin(115200); 
  delay(10);
- //setup for the LED
+ // setup for the LED
+ // Here you define your setup for your device
  pinMode(LED_PIN, OUTPUT); 
  digitalWrite(LED_PIN, LOW);
  // Connect to WiFi access point. 
