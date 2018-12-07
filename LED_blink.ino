@@ -9,7 +9,7 @@
 #define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD        ""
-// Where you define your LED GPIO
+// Where I define LED GPIO
 #define LED_PIN         15
 /************ Global State ******************/ 
 // Create an ESP8266 WiFiClient class to connect to the MQTT server. 
@@ -18,8 +18,6 @@ WiFiClient client;
 Adafruit_MQTT_Client mqtt(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_PASSWORD); 
 /****************************** Feeds ***************************************/ 
 // Setup a feed called 'esp8266_led' for subscribing to changes. 
-// In "Adafruit_MQTT_Subscribe esp8266_[device] = Adafruit_MQTT_Subscribe(&mqtt, MQTT_USERNAME "/led/esp8266")", 
-// Change [device] to your device name.
 Adafruit_MQTT_Subscribe esp8266_led = Adafruit_MQTT_Subscribe(&mqtt, MQTT_USERNAME "/led/esp8266"); 
 /*************************** Sketch Code ************************************/ 
 
@@ -28,10 +26,9 @@ void setup() {
  Serial.begin(115200); 
  delay(10);
  // setup for the LED
- // Here you define your setup for your device
  pinMode(LED_PIN, OUTPUT); 
  digitalWrite(LED_PIN, LOW);
- // Connect to WiFi access point. 
+ /****************** Connect to WiFi access point. **************************/
  Serial.println(); Serial.println(); 
  Serial.print("Connecting to "); 
  Serial.println(WLAN_SSID); 
@@ -44,11 +41,10 @@ void setup() {
  Serial.println("WiFi connected"); 
  Serial.println("IP address: "); Serial.println(WiFi.localIP());
  // Setup MQTT subscription for esp8266_led feed. 
- // In esp8266_[device] change [device] to your device name
  mqtt.subscribe(&esp8266_led); 
 }  
 uint32_t period= 5000; // 5 seconds
-// This is where the magic happens
+/********************** This is where the magic happens *********************/
 void loop() {
  // Ensure the connection to the MQTT server is alive (this will make the first 
  // connection and automatically reconnect when disconnected).  See the MQTT_connect.
@@ -58,15 +54,12 @@ void loop() {
  // Here it reads the subscription 
  Adafruit_MQTT_Subscribe *subscription; 
  while ((subscription = mqtt.readSubscription())) { 
-   // In esp8266_[device] change [device] to your device name
    if (subscription == &esp8266_led) { 
      char *message = (char *)esp8266_led.lastread; 
      Serial.print(F("Got: ")); 
      Serial.println(message); 
         // Checking for message 
-        // In (strncmp(message, "[Your msg]", 2) == 0) change [Your msg] to your message.
      if (strncmp(message, "ON", 2) == 0) { 
-       // This is where you paste in your loop
        // Turn the LED on, and make sure the led blinks for the set period.
        for( uint32_t tStart = millis(); (millis()-tStart) < period; ){ 
        heartBeat(1.2);
@@ -75,7 +68,7 @@ void loop() {
     } 
   } 
 }
-/** Function to connect and reconnect as necessary to the MQTT server. **/ 
+/*** Function to connect and reconnect as necessary to the MQTT server. ***/ 
 void MQTT_connect() { 
  int8_t ret; 
  // Stop if already connected. 
