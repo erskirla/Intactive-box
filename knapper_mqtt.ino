@@ -2,7 +2,7 @@
 #include <ESP8266WiFi.h> 
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h" 
-/************************* WiFi Access Point *********************************/ 
+/************************* WiFi Access Point **********************************/ 
 #define WLAN_SSID       "[SSID]" 
 #define WLAN_PASS       "[Password]" 
 #define MQTT_SERVER     "[Host IP-adress]" // static ip address
@@ -12,17 +12,16 @@
 // Here is where you define the buttons GPIO
 #define BUTTON1_PIN     14                    
 #define BUTTON2_PIN     12
-/************ Global State ******************/ 
+/**************************** Global State ***********************************/ 
 // Create an ESP8266 WiFiClient class to connect to the MQTT server. 
 WiFiClient client; 
 // Setup the MQTT client class by passing in the WiFi client and MQTT server and login details. 
 Adafruit_MQTT_Client mqtt(&client, MQTT_SERVER, MQTT_PORT, MQTT_USERNAME, MQTT_PASSWORD); 
-/****************************** Feeds ***************************************/ 
+/******************************* Feeds ***************************************/ 
 // Setup a feed called 'buttons' for publishing. 
 // Notice MQTT paths for AIO follow the form: <username>/feeds/<feedname> 
-Adafruit_MQTT_Publish pi_buttons = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/buttons/pi"); 
-//Adafruit_MQTT_Publish pi_button2 = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/buttons/pi"); 
-/*************************** Sketch Code ************************************/ 
+Adafruit_MQTT_Publish pi_buttons = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/buttons/pi");  
+/**************************** Sketch Code ************************************/ 
 
 void MQTT_connect(); 
 void setup() { 
@@ -33,7 +32,7 @@ void setup() {
  pinMode(BUTTON1_PIN, INPUT_PULLUP);
  pinMode(BUTTON2_PIN, INPUT_PULLUP); 
  Serial.println(F("RPi-ESP-MQTT")); 
- // Connect to WiFi access point. 
+ /********************* Connect to WiFi access point. ***********************/
  Serial.println(); Serial.println(); 
  Serial.print("Connecting to "); 
  Serial.println(WLAN_SSID); 
@@ -78,7 +77,7 @@ void loop() {
      pi_buttons.publish("Button 1"); 
      button1=2;
     }
-   delay(15000);
+   delay(15000); //Waiting 15 seconds before a button can be pressed again. 
    button1 = 0;
   } 
  else if ((button2_first == HIGH) && (button2_second == LOW)) { 
@@ -91,7 +90,7 @@ void loop() {
      pi_buttons.publish("Button 2"); 
      button2=2; 
     }
-   delay(20000);
+   delay(20000); //Waiting 20 seconds before you can press a button again.
    button2 = 0;
   } 
 }
