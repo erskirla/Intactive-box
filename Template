@@ -56,7 +56,8 @@ void loop() {
  Adafruit_MQTT_Subscribe *subscription; 
  while ((subscription = mqtt.readSubscription())) { 
    // Change [device] to your device name
-   if (subscription == &esp8266_[device]) { 
+   if (subscription == &esp8266_[device]) {
+     // Change [device] to your device name
      char *message = (char *)esp8266_[device].lastread; 
      Serial.print(F("Got: ")); 
      Serial.println(message); 
