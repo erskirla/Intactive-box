@@ -11,3 +11,9 @@ broker.py is the python code for raspberry pi.
 
 LED_blink.ino is the code for one device, this code calls apon heart_beat. 
 This device is a transparent anatomical correct heart that blinks with the heart rythm
+
+MQTT_Catapult.ino is the code for the other device.
+This device is a catapult that throws a ball into a reciever. The ball then rolls back to the throwing arm.
+(Self loading catapult)
+
+Template is the sorce code for the subscriber. Use this code if you want to implement a new device to the system.
