@@ -4,9 +4,9 @@
 #include "Adafruit_MQTT_Client.h"
 #include <Servo.h>
 /************************* WiFi Access Point *********************************/ 
-#define WLAN_SSID       "Kenneths-net" 
-#define WLAN_PASS       "kenneth0987" 
-#define MQTT_SERVER     "192.168.43.239" // static ip address
+#define WLAN_SSID       "[SSID]" 
+#define WLAN_PASS       "[Password]" 
+#define MQTT_SERVER     "[Host IP]" // static ip address
 #define MQTT_PORT       1883                    
 #define MQTT_USERNAME   "" 
 #define MQTT_PASSWORD        ""
