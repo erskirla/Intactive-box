@@ -23,6 +23,7 @@ Adafruit_MQTT_Subscribe esp8266_led = Adafruit_MQTT_Subscribe(&mqtt, MQTT_USERNA
 
 void MQTT_connect(); //connects to the server
 void setup() { 
+ WiFi.mode (WIFI_STA); // turn off AP (Access point) mode
  Serial.begin(115200); 
  delay(10);
  // setup for the LED
