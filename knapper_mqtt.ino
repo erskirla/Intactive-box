@@ -25,6 +25,7 @@ Adafruit_MQTT_Publish pi_buttons = Adafruit_MQTT_Publish(&mqtt, MQTT_USERNAME "/
 
 void MQTT_connect(); 
 void setup() { 
+ WiFi.mode (WIFI_STA); // turn off AP (Access point) mode
  Serial.begin(115200); 
  delay(10); 
  // Setup buttons as an input with internal pull-up.
