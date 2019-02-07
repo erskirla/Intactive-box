@@ -28,7 +28,8 @@ Adafruit_MQTT_Subscribe esp8266_catapult = Adafruit_MQTT_Subscribe(&mqtt, MQTT_U
 /*************************** Sketch Code ************************************/ 
 
 void MQTT_connect(); //connects to the server
-void setup() { 
+void setup() {
+ WiFi.mode (WIFI_STA); // turn off AP (Access point) mode
  Serial.begin(115200); 
  delay(10);
  //setup for the Catapult
