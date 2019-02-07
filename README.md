@@ -16,4 +16,4 @@ MQTT_Catapult.ino is the code for the other device.
 This device is a catapult that throws a ball into a reciever. The ball then rolls back to the throwing arm.
 (Self loading catapult)
 
-Template is the sorce code for the subscriber. Use this code if you want to implement a new device to the system.
+Template is the source code for the subscriber. Use this code if you want to implement a new device to the system.
