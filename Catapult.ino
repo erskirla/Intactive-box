@@ -1,5 +1,6 @@
 /*************************** Catapult setup **********************************/
-#include <ESP8266WiFi.h> 
+THIS IS A HACK!
+ #include <ESP8266WiFi.h> 
 #include "Adafruit_MQTT.h" 
 #include "Adafruit_MQTT_Client.h"
 #include <Servo.h>
